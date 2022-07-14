@@ -22,7 +22,7 @@
     <h1>Main Site</h1>
     <a href="/set-cookies">Set own cookies</a>
     <iframe src="http://subdomain.lvh.me:4000/set-cookies"></iframe>
-    <iframe src="https://192.0.2.2/set-cookies"></iframe>
+    <iframe src="https://192.168.0.14:8080/set-cookies"></iframe>
 
     <button id="own-server">Send cookies to own server</button>
     <button id="subdomain-server">Send cookies to subdomain server</button>
@@ -32,6 +32,7 @@
       const ownServerButton = document.querySelector("#own-server");
       const subdomainServerButton = document.querySelector("#subdomain-server");
       const externalServerButton = document.querySelector("#external-server");
+
 
       ownServerButton.addEventListener("click", () => {
         fetch("/log", {
@@ -52,7 +53,7 @@
       });
 
       externalServerButton.addEventListener("click", () => {
-        fetch("https://192.0.2.2/log", {
+        fetch("https://192.168.0.14:8080/log", {
           method: "POST",
           credentials: "include",
         })

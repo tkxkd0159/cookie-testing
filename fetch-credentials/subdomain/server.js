@@ -9,23 +9,23 @@ const __dirname = dirname(import.meta.url)
 app.use(express.static('public'))
 app.use(cookieParser())
 
-// No CORS required to send credentials across subdomains
+// No CORS required to send credentials across domain & its subdomains
 
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'views', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'views', 'index.html'))
 })
 
 app.get('/set-cookies', (req, res) => {
-  res.cookie('None', 'Subdomain', { sameSite: 'none', secure: true })
-  res.cookie('Lax', 'Subdomain', { sameSite: 'lax' })
-  res.cookie('Strict', 'Subdomain', { sameSite: 'strict' })
-  res.send('Subdomain cookies set')
+    res.cookie('None', 'Subdomain', {sameSite: 'none', secure: true})
+    res.cookie('Lax', 'Subdomain', {sameSite: 'lax'})
+    res.cookie('Strict', 'Subdomain', {sameSite: 'strict'})
+    res.send('Subdomain cookies set')
 })
 
 app.post('/log', (req, res) => {
-  console.log(req.cookies)
+    console.log(req.cookies)
 })
 
 app.listen(4000, function () {
-  console.log('App listening at http://localhost:4000')
+    console.log('App listening at http://subdomain.lvh.me:4000/')
 })
